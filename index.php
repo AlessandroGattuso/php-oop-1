@@ -6,17 +6,17 @@ class Movie
   public $rate;
   public $genres;
 
-  function __construct($t, $d, $r, ...$genres)
+  function __construct($t, $d, $r, ...$g)
   {
     $this->title = $t;
     $this->description = $d;
     $this->rate = $r;
-    $this->genres = $genres;
+    $this->genres = $g;
   }
 }
 
 $movie_1 = new Movie('Un giorno in pretura', 'un bel film', 5, 'azione', 'fantasy', 'dramma');
-$movie_2 = new Movie('Juventus', 'una storia meravigliosa, però i 15 punti di penalizzazione stonavano un po\'', 5, 'drama', 'documentario');
+$movie_2 = new Movie('Juventus', 'una storia meravigliosa, però i 15 punti di penalizzazione stonavano un po\'', 3, 'drama', 'documentario');
 $movie_3 = new Movie('John Wick', 'un romano a roma', 3, 'azione');
 
 $movies = [$movie_1, $movie_2, $movie_3];
