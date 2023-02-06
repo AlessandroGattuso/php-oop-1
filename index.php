@@ -16,6 +16,12 @@ class Movie
   public function getMovie(){
     return  $this->title."-".$this->rate."-".$this->genres;
   }
+
+  public function getGenres($index){
+   return ($index + 1 == sizeof($this->genres)) ? 
+                                    '<span>'.$this->genres[$index]->name.'</span> ' : 
+                                    '<span>'.$this->genres[$index]->name.', '.'</span> ';
+  }
 }
 
 class Genre{
@@ -54,11 +60,8 @@ $movies = [$movie_1, $movie_2, $movie_3];
           <li class="list-group-item">Valutazione: <?php echo $movie->rate.'/5'; ?></li>
           <li class="list-group-item">
             Generi:
-            <?php foreach ($movie->genres as $index => $value) {
-                    echo  ($index + 1 == sizeof($movie->genres)) ? 
-                                    '<span>'.$value->name.'</span> ' : 
-                                    '<span>'.$value->name.', '.'</span> ';
-                  } 
+            <?php foreach ($movie->genres as $index => $value)
+                    echo $movie->getGenres($index); 
             ?>
           </li>
         </ul>
