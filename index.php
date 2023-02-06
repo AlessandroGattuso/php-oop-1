@@ -6,8 +6,7 @@ class Movie
   public $rate;
   public $genres;
 
-  function __construct($t, $d, $r, ...$g)
-  {
+  function __construct($t, $d, $r, ...$g){
     $this->title = $t;
     $this->description = $d;
     $this->rate = $r;
@@ -19,9 +18,17 @@ class Movie
   }
 }
 
-$movie_1 = new Movie('Un giorno in pretura', 'un bel film', 5, 'azione', 'fantasy', 'dramma');
-$movie_2 = new Movie('Juventus', 'una storia meravigliosa, però i 15 punti di penalizzazione stonavano un po\'', 3, 'drama', 'documentario');
-$movie_3 = new Movie('John Wick', 'un romano a roma', 3, 'azione');
+class Genre{
+  public $name;
+
+  function __construct($n){
+    $this->name = $n;
+  }
+}
+
+$movie_1 = new Movie('Un giorno in pretura', 'un bel film', 5, new Genre('azione'), new Genre('fantasy'), new Genre('dramma'));
+$movie_2 = new Movie('Juventus', 'una storia meravigliosa, però i 15 punti di penalizzazione stonavano un po\'', 3, new Genre('dramma'), new Genre('documentario'));
+$movie_3 = new Movie('John Wick', 'un romano a roma', 3, new Genre('azione'));
 
 $movies = [$movie_1, $movie_2, $movie_3];
 ?>
@@ -49,8 +56,8 @@ $movies = [$movie_1, $movie_2, $movie_3];
             Generi:
             <?php foreach ($movie->genres as $index => $value) {
                     echo  ($index + 1 == sizeof($movie->genres)) ? 
-                                    '<span>'.$value.'</span> ' : 
-                                    '<span>'.$value.', '.'</span> ';
+                                    '<span>'.$value->name.'</span> ' : 
+                                    '<span>'.$value->name.', '.'</span> ';
                   } 
             ?>
           </li>
