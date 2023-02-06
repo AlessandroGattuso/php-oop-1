@@ -1,36 +1,6 @@
 <?php
-class Movie
-{
-  public $title;
-  public $description;
-  public $rate;
-  public $genres;
-
-  function __construct($t, $d, $r, ...$g){
-    $this->title = $t;
-    $this->description = $d;
-    $this->rate = $r;
-    $this->genres = $g;
-  }
-
-  public function getMovie(){
-    return  $this->title."-".$this->rate."-".$this->genres;
-  }
-
-  public function getGenres($index){
-   return ($index + 1 == sizeof($this->genres)) ? 
-                                    '<span>'.$this->genres[$index]->name.'</span> ' : 
-                                    '<span>'.$this->genres[$index]->name.', '.'</span> ';
-  }
-}
-
-class Genre{
-  public $name;
-
-  function __construct($n){
-    $this->name = $n;
-  }
-}
+include __DIR__.'/models/movie.php';
+include __DIR__.'/models/genre.php';
 
 $movie_1 = new Movie('Un giorno in pretura', 'un bel film', 5, new Genre('azione'), new Genre('fantasy'), new Genre('dramma'));
 $movie_2 = new Movie('Juventus', 'una storia meravigliosa, però i 15 punti di penalizzazione stonavano un po\'', 3, new Genre('dramma'), new Genre('documentario'));
@@ -51,7 +21,7 @@ $movies = [$movie_1, $movie_2, $movie_3];
 </head>
 
 <body>
-  <div class="container d-flex flex-wrap gap-5 mt-5">
+  <div class="container d-flex flex-wrap justify-content-around mt-5">
     <?php foreach ($movies as $movie) { ?>
       <div class="card" style="width: 18rem;">
         <div class="card-header"><?php echo $movie->title; ?></div>
