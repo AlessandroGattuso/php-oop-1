@@ -13,6 +13,10 @@ class Movie
     $this->rate = $r;
     $this->genres = $g;
   }
+
+  public function getMovie(){
+    return  $this->title."-".$this->rate."-".$this->genres;
+  }
 }
 
 $movie_1 = new Movie('Un giorno in pretura', 'un bel film', 5, 'azione', 'fantasy', 'dramma');
